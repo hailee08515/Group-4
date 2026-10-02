@@ -412,18 +412,26 @@
       }
 
       .save-btn {
+        width: 46px;
+        height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         background: #edf4fe;
         color: var(--primary-deep);
         border: 1px solid #d7e3f6;
-        border-radius: 12px;
-        padding: 8px 12px;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 1.5rem;
+        line-height: 1;
         font-weight: 700;
+        box-shadow: 0 8px 16px rgba(79, 103, 139, 0.08);
       }
 
       .save-btn.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
+        background: #fff0f3;
+        color: #e95772;
+        border-color: #f4c7d1;
       }
 
       .meta-row {
@@ -1401,7 +1409,13 @@
         detailPanel.innerHTML = `
           <div class="details-header">
             <h2>${escapeHtml(selected.name)}</h2>
-            <button type="button" class="save-btn ${isSaved ? 'active' : ''}" data-save-id="${selected.id}">${isSaved ? 'Saved' : 'Save'}</button>
+            <button
+              type="button"
+              class="save-btn ${isSaved ? 'active' : ''}"
+              data-save-id="${selected.id}"
+              aria-label="${isSaved ? 'Remove from saved' : 'Save restaurant'}"
+              title="${isSaved ? 'Remove saved restaurant' : 'Save restaurant'}"
+            >${isSaved ? '♥' : '♡'}</button>
           </div>
           <div class="meta-row">
             <span class="meta-pill">${escapeHtml(selected.cuisine || 'Custom search')}</span>
